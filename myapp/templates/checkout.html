@@ -1,0 +1,109 @@
+{% extends 'header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopping</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">      
+		<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		
+		<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+		<script src="{% static 'themes/js/superfish.js' %}"></script>	
+		<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		
+		<div id="wrapper" class="container">
+			<section class="header_text sub">
+				<h4><span>Check Out</span></h4>
+				{% if msg %}
+                    <div class="alert alert-primary" role="alert">
+                        {{ msg }}
+                    </div>
+        	    {% endif %}
+			</section>	
+			<section class="main-content">
+				<div class="row">
+					<div class="span12">
+						<div class="accordion" id="accordion2">
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Confirm Order</a>
+								</div>
+								<div id="collapseThree" class="accordion-body collapse">
+								<form name="pay" action="{% url 'pay' %}" method="post">
+								{% csrf_token %}
+									<div class="accordion-inner">
+										<div class="row-fluid">
+											<div class="control-group">
+												<div class="controls">
+														<input type="hidden" name='net' value="{{ amount }}">
+														<input type="hidden" name='item_size' value="{{ size }}">
+														<input type="hidden" name='fname' value="{{ fname }}">
+														<input type="hidden" name='lname' value="{{ lname }}">
+														<input type="hidden" name='e_mail' value="{{ email }}">
+														<input type="hidden" name='m_obile' value="{{ mobile }}">
+														<input type="hidden" name='fax' value="{{ fax }}">
+														<input type="hidden" name='add1' value="{{ add1 }}">
+														<input type="hidden" name='add2' value="{{ add2 }}">
+														<input type="hidden" name='city' value="{{ city }}">
+														<input type="hidden" name='post_code' value="{{ post_code }}">
+														<input type="hidden" name='country' value="{{ country }}">
+														<input type="hidden" name='state' value="{{ state }}">
+												</div>
+												<h2>Total Amount : {{ amount }}</h2>
+												<h2>Size : {{ item_size }}</h2>
+												<br>
+												<h4>Your Personal Details </h4>
+												
+												<h6>First Name : {{ fname }}  </h6>
+												<h6>Last Name : {{ lname }} </h6>
+												
+												<h6>Email : {{ e_mail }}</h6>
+												
+												<h6>Mobile : {{ m_obile }}</h6>
+												<h6>Fax : {{ fax }}</h6>																	
+
+												<br>
+												<h4>Your Address</hr>					
+												<h6>Address1 : {{ add1 }}</h6>	
+												<h6>Address2 : {{ add2 }}</h6>	
+												<h6>City : {{ city }}</h6>	
+												<h6>Postal Code : {{ post_code }}</h6>
+												<h6>Country : {{ country }}</h6>																	
+												<h6>State : {{ state }}</h6>	
+											</div>									
+											<input type='submit' class='btn btn-inverse large' value='Place Order'>
+										</div>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>				
+					</div>
+				</div>
+			</section>			
+			{% include 'footer.html' %}
+		</div>
+		<script src="{% static 'themes/js/common.js' %}"></script>
+    </body>
+</html>
+{% endblock %}

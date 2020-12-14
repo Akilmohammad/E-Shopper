@@ -1,0 +1,90 @@
+{% extends "seller_header.html" %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+		<title>Shopping</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">      
+		<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		
+		<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+		<script src="{% static 'themes/js/superfish.js' %}"></script>	
+		<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+    
+</head>
+<body>
+	
+    <div id="wrapper" class="container">			
+		<div style='margin-left:27px'>
+			<section  class="homepage-slider" id="home-slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<img src="{% static 'themes/images/carousel/banner-3.jpg' %}" alt="" />
+							<div class="intro">
+								<h1>Diwali sale</h1>
+								<p><span>Up to 40% Off</span></p>
+								<p><span>On selected items online and in stores</span></p>
+							</div>
+						</li>
+						<li>
+							<img src="{% static 'themes/images/carousel/banner-6.jpg' %}" alt="" />
+							<div class="intro">
+								<h1>Christmas sale</h1>
+								<p><span>Up to 40% Off</span></p>
+								<p><span>On selected items online and in stores</span></p>
+							</div>
+						</li>
+						<li>
+							<img src="{% static 'themes/images/carousel/banner-5.jpg' %}" alt="" />
+							<div class="intro">
+								<h1>New Year sale</h1>
+								<p><span>Up to 40% Off</span></p>
+								<p><span>On selected items online and in stores</span></p>
+							</div>
+						</li>
+					</ul>
+				</div>			
+			</section>
+			
+        <br><br>
+        <h1 style='margin-left:30px'>You are Seller</h1>
+		<h3 style='margin-left:30px; color:blue;'>Now You Can Add More Products With Joy.</h3>
+		<br><br><br><br><br><br><br><br><br>
+        {% include 'seller_footer.html' %}
+        </div>    
+		<script src="{% static 'themes/js/common.js' %}"></script>
+		<script src="{% static 'themes/js/jquery.flexslider-min.js' %}"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+</body>
+</html>
+
+{% endblock %}

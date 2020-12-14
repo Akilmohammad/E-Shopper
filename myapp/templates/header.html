@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+                <form method="POST" class="search_form" action="{% url 'search_item' %}">
+                {% csrf_token %}
+                    <input name='search' type="text" style='color:black' class="input-block-level search-query" Placeholder="eg. T-sirt">
+                </form>
+            </div>
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">				
+                        {% if request.session.username %}
+                        <li><a href="{% url 'mycart' %}">Your Cart
+                        {% if request.session.total_cart == 0 %}
+    
+                        {% else %}
+                        ({{ request.session.total_cart }})
+                        {% endif %}
+                        </a></li>
+                        <li><a href="{% url 'mywishlist' %}">Your Wishlist
+                        {% if request.session.total_wishlist == 0 %}
+
+                        {% else %}
+                        ({{ request.session.total_wishlist }})
+                        {% endif %}
+                        </a></li>
+                        <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                        <nav id="menu" class="pull-right">
+                        <ul>
+                        <li style='margin-top:-10px'><a href="{% url 'index' %}">{{ request.session.username }}'s Account</a>					
+								<ul>
+                                    <li><a href="{% url 'my_account' %}">Your Profile</a></li>
+									<li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>							
+									<li><a href="{% url 'change_password' %}">Change Password</a></li>
+									<li><a href="{% url 'logout' %}">Logout</a></li>							
+								</ul>
+							</li>
+                        </ul>    
+                        
+                        {% else %}
+                        <li style="background-color: aqua; font-size:12px"><a href="{% url 'register' %}">Register</a></li>
+                        <li style="background-color: orange;"><a href="{% url 'login' %}">Login</a></li>		
+                        {% endif %}
+                        </nav>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">				
+					<a href="{% url 'index' %}" class="logo pull-left"><img src="{% static 'themes/images/logo.png' %}" class="site_logo" alt=""></a>
+					<nav id="menu" class="pull-right">
+						<ul>
+							<li><a href="#">Woman Cloth</a>					
+								<ul>
+                                    <li><a href="{% url 'show_w_cloths' cn='top' %}">View All Tops</a></li>
+                                    <li><a href="{% url 'show_w_cloths' cn='pant' %}">View All Pants</a></li>							
+                                    <li><a href="{% url 'show_w_cloths' cn='saree' %}">View All Saree</a></li>
+                                    <li><a href="{% url 'show_w_cloths' cn='punjabi' %}">View All Punjabi</a></li>
+                                    <li><a href="{% url 'show_w_cloths' cn='western' %}">View All Western</a></li>
+                                </ul>
+							</li>															
+							<li><a href="#">Man Cloth</a>
+                                <ul>
+                                    <li><a href="{% url 'show_m_cloths' sc='shirt' %}">View All Shirts</a></li>
+                                    <li><a href="{% url 'show_m_cloths' sc='t-shirt' %}">View All T-Shirts</a></li>							
+                                    <li><a href="{% url 'show_m_cloths' sc='jeans' %}">View All Jeans Pant</a></li>
+                                    <li><a href="{% url 'show_m_cloths' sc='jackets' %}">View All Jackets</a></li>
+                                    <li><a href="{% url 'show_m_cloths' sc='casual' %}">View All Casual</a></li>
+                                </ul>
+                            </li>			
+							<li><a href="./products.html">Woman Accessories</a>					
+								<ul>
+                                    <li><a href="{% url 'show_w_acc' sa='sunglasses' %}">View All Sunglasses</a></li>
+                                    <li><a href="{% url 'show_w_acc' sa='necklace' %}">View All Necklace</a></li>							
+                                    <li><a href="{% url 'show_w_acc' sa='watch' %}">View All Watch</a></li>
+                                    <li><a href="{% url 'show_w_acc' sa='tie' %}">View All Tie</a></li>
+                                    <li><a href="{% url 'show_w_acc' sa='purse' %}">View All Purse</a></li>
+                                    <li><a href="{% url 'show_w_acc' sa='ring' %}">View All Ring</a></li>
+                                    <li><a href="{% url 'show_w_acc' sa='hair_band' %}">View All Hair Band</a></li>
+                                    <li><a href="{% url 'show_w_acc' sa='cap' %}">View All Cap</a></li>
+                                </ul>
+							</li>															
+							<li><a href="./products.html">Man Accessories</a>
+                                <ul>
+                                    <li><a href="{% url 'show_m_acc' sa='m_sunglasses' %}">View All Sunglasses</a></li>
+                                    <li><a href="{% url 'show_m_acc' sa='suspenders' %}">View All Suspenders</a></li>							
+                                    <li><a href="{% url 'show_m_acc' sa='m_watch' %}">View All Watch</a></li>
+                                    <li><a href="{% url 'show_m_acc' sa='m_tie' %}">View All Tie</a></li>
+                                    <li><a href="{% url 'show_m_acc' sa='m_purse' %}">View All Purse</a></li>
+                                    <li><a href="{% url 'show_m_acc' sa='belt' %}">View All Belt</a></li>
+                                    <li><a href="{% url 'show_m_acc' sa='socks' %}">View All Socks</a></li>
+                                    <li><a href="{% url 'show_m_acc' sa='m_cap' %}">View All Cap</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">View Women Footwear</a>
+                                <ul>
+                                    <li><a href="{% url 'show_w_footwear' sf='wedges' %}">View All Wedges</a></li>
+                                    <li><a href="{% url 'show_w_footwear' sf='ballerinas' %}">View All Ballerinas</a></li>							
+                                    <li><a href="{% url 'show_w_footwear' sf='canvas_shoes' %}">View All Canvas Shoes</a></li>
+                                    <li><a href="{% url 'show_w_footwear' sf='wellington_boots' %}">View All Wellington Boots</a></li>
+                                    <li><a href="{% url 'show_w_footwear' sf='flip_flop' %}">View All Flip-Flop</a></li>
+                                    <li><a href="{% url 'show_w_footwear' sf='sandals' %}">View All Sandals</a></li>
+                                    <li><a href="{% url 'show_w_footwear' sf='sport_shoes' %}">View All Sport Shoes</a></li>
+                                    <li><a href="{% url 'show_w_footwear' sf='heels' %}">View All Heels</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">View Men Footwear</a>
+                                <ul>
+                                    <li><a href="{% url 'show_m_footwear' sf='m_sandals' %}">View All Sandals</a></li>
+                                    <li><a href="{% url 'show_m_footwear' sf='m_flipflop' %}">View All Flip Flop</a></li>							
+                                    <li><a href="{% url 'show_m_footwear' sf='m_canvas_shoes' %}">View All Canvas Shoes</a></li>
+                                    <li><a href="{% url 'show_m_footwear' sf='brogues' %}">View All Brogues</a></li>
+                                    <li><a href="{% url 'show_m_footwear' sf='oxford' %}">View All Oxford</a></li>
+                                    <li><a href="{% url 'show_m_footwear' sf='loafers' %}">View All Loafers</a></li>
+                                    <li><a href="{% url 'show_m_footwear' sf='m_sport_shoes' %}">View All Sport Shoes</a></li>
+                                    <li><a href="{% url 'show_m_footwear' sf='leather' %}">View All Leather Shoes</a></li>
+                                </ul>
+                            </li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

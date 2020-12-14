@@ -1,0 +1,154 @@
+{% extends 'seller_header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<title>Shopping</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+	<!-- bootstrap -->
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+
+	<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet" />
+
+	<!-- global styles -->
+	<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet" />
+	<link href="{% static 'themes/css/main.css' %}" rel="stylesheet" />
+
+	<!-- scripts -->
+	<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'themes/js/superfish.js' %}"></script>
+	<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	   <h4><span style='margin-left:500px'>Edit Women footwear</span></h4>
+		
+		<section class="main-content">
+			<div class="row">
+				<div class="span7" style="margin-left: 500px;">
+					<h4 class="title"><span class="text"><strong>Edit Item</strong> Form For Seller</span></h4>
+					{% if msg %}
+					<div class="alert alert-primary" role="alert">
+						{{ msg }}
+					</div>
+					{% endif %}
+					<form name="wf_edit" action="{% url 'wf_edit' pk=women_footwear.pk %}" method="post" class="form-stacked" enctype="multipart/form-data">
+						{% csrf_token %}
+						<fieldset>
+						<input type="hidden" name='usertype' value='seller'>
+							{% comment %} <div class="control-group">
+								<label class="control-label">Category of footwear:</label>
+								<div class="controls">
+									<select name="women_footwear_category" required='required' value='{{women_footwear.women_footwear_category}}'>
+                                        <option>  --- Select Category ---  </option>
+                                        <option value="top">Top</option>
+                                        <option value="pants">Pants</option>
+                                        <option value="saree">Saree</option>
+                                        <option value="punjabi">Punjabi</option>
+                                        <option value="western">Western</option>
+                                    </select>
+								</div>
+							</div> {% endcomment %}
+							<div class="control-group">
+								<label class="control-label">Name:</label>
+								<div class="controls">
+									<input type="text" name="women_footwear_name" required='required'
+										placeholder="Enter footwear Name" class="input-xlarge" value="{{women_footwear.women_footwear_name}}">
+										{% comment %} <td><span id="email" style="color: red;"></span></td> {% endcomment %}
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Price:</label>
+								<div class="controls">
+									<input type="text" name="women_footwear_price" required='required' placeholder="Enter footwear Price"
+										class="input-xlarge" value="{{women_footwear.women_footwear_price}}">
+										{% comment %} <td><span id="mobile" style="color: red;"></span></td> {% endcomment %}
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Brand :</label>
+								<div class="controls">
+									<input type="text" name="women_footwear_brand"
+										placeholder="Enter footwear Brand" class="input-xlarge" value="{{women_footwear.women_footwear_brand}}"> 
+									{% comment %} <td><span id="password" style="color: red;"></span></td>	 {% endcomment %}
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Product ID :</label>
+								<div class="controls">
+									<input type="text" name="women_footwear_proID"
+										placeholder="Enter footwear proID" class="input-xlarge" value="{{women_footwear.women_footwear_proID}}"> 
+									{% comment %} <td><span id="password" style="color: red;"></span></td>	 {% endcomment %}
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Description :</label>
+								<div class="controls">
+									<textarea name='women_footwear_desc' cols='30' rows='5'>{{women_footwear.women_footwear_desc}}</textarea>
+								</div>
+							</div>
+                            <div class="control-group">
+								<label class="control-label">Old Image:</label>
+								<div class="controls">
+									<img src="{{women_footwear.women_footwear_image.url}}" width="100" height="100">
+									<img src="{{women_footwear.women_footwear_image1.url}}" width="100" height="100">
+									<img src="{{women_footwear.women_footwear_image2.url}}" width="100" height="100">
+									<img src="{{women_footwear.women_footwear_image3.url}}" width="100" height="100">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Accessory Image:</label>
+								<div class="controls">
+									<input type="file" name="women_footwear_image" class="input-xlarge">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<input type="file" name="women_footwear_image1" class="input-xlarge">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<input type="file" name="women_footwear_image2" class="input-xlarge">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<input type="file" name="women_footwear_image3" class="input-xlarge">
+								</div>
+							</div>
+							<hr>
+							<div class="actions">
+								<input tabindex="9" id="btn" class="btn btn-inverse large" type="submit" value="Edit footwear">
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</section>
+		{% include 'seller_footer.html' %}
+	</div>
+	<script src="{% static 'themes/js/common.js' %}"></script>
+	<script>
+		$(document).ready(function () {
+			$('#checkout').click(function (e) {
+				document.location.href = "checkout.html";
+			})
+		});
+	</script>
+</body>
+
+</html>
+{% endblock %}

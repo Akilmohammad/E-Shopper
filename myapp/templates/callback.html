@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <title>Callback</title>
+</head>
+<body>
+    <h2>Callback Messsage: </h2>                    <br>
+    <h3> Checksum Verification: {{ message }} </h3> <br>
+    MID: {{ MID }}                       &nbsp;&nbsp;&nbsp;&nbsp;            <br>
+    TXNID: {{ TXNID }}                   &nbsp;&nbsp;&nbsp;&nbsp;              <br>
+    ORDERID: {{ ORDERID }}               &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    BANKTXNID: {{ BANKTXNID }}           &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    TXNAMOUNT: {{ TXNAMOUNT }}           &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    CURRENCY: {{ CURRENCY }}             &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    <h3> STATUS: {{ STATUS }} </h3>      &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    RESPCODE: {{ RESPCODE }}             &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    RESPMSG: {{ RESPMSG }}               &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    TXNDATE: {{ TXNDATE }}               &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    GATEWAYNAME: {{ GATEWAYNAME }}       &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    BANKNAME: {{ BANKNAME }}             &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    BIN_NAME: {{ BIN_NAME }}             &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    PAYMENTMODE: {{ PAYMENTMODE }}       &nbsp;&nbsp;&nbsp;&nbsp;           <br>
+    CHECKSUMHASH: {{ CHECKSUMHASH }}     &nbsp;&nbsp;&nbsp;&nbsp;           <br><br>
+
+    <a href="{% url 'pdf_view' %}" class="logo pull-left">View Bill</a>&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'pdf_download' %}" class="logo pull-left">Download Bill</a>
+    <br>
+    <a href="{% url 'index' %}" class="logo pull-left">Back to HomePage</a>
+</body>
+</html>

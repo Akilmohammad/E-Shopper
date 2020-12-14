@@ -1,0 +1,158 @@
+{% extends 'seller_header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Shopping</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet" />
+
+    <!-- global styles -->
+    <link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet" />
+    <link href="{% static 'themes/css/main.css' %}" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'themes/js/superfish.js' %}"></script>
+    <script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+    <div id="wrapper" class="container">
+        <h4><span style='margin-left:500px'>Add Woman Cloths</span></h4>
+
+        <section class="main-content">
+            <div class="row">
+                <div class="span7" style="margin-left: 500px;">
+                    <h4 class="title"><span class="text"><strong>Add Item</strong> Form For Seller</span></h4>
+                    {% if msg %}
+                    <div class="alert alert-primary" role="alert">
+                        {{ msg }}
+                    </div>
+                    {% endif %}
+                    <form name="register" action="{% url 'add_women_cloths' %}" method="post" class="form-stacked" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset>
+                            <input type="hidden" name='usertype' value='seller'>
+                            <div class="control-group">
+                                <label class="control-label">Category of Cloth:</label>
+                                <div class="controls">
+                                    <select name="women_cloth_category" required='required'>
+                                        <option>  --- Select Category ---  </option>
+                                        <option value="top">Top</option>
+                                        <option value="pants">Pants</option>
+                                        <option value="saree">Saree</option>
+                                        <option value="punjabi">Punjabi</option>
+                                        <option value="western">Western</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Name:</label>
+                                <div class="controls">
+                                    <input type="text" name="women_cloth_name" required='required' placeholder="Enter Cloth Name" class="input-xlarge">
+                                    <!-- <td><span id="email" style="color: red;"></span></td>  -->
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Price:</label>
+                                <div class="controls">
+                                    <input type="text" name="women_cloth_price" required='required' placeholder="Enter Cloth Price" class="input-xlarge"> {% comment %}
+                                    <td><span id="mobile" style="color: red;"></span></td> {% endcomment %}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Brand :</label>
+                                <div class="controls">
+                                    <input type="text" name="women_cloth_brand" required='required' placeholder="Enter Cloth Brand" class="input-xlarge"> {% comment %}
+                                    <td><span id="password" style="color: red;"></span></td> {% endcomment %}
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Product ID :</label>
+                                <div class="controls">
+                                    <input type="text" name="women_cloth_proID" placeholder="Enter Cloth Product ID" class="input-xlarge"> {% comment %}
+                                    <td><span id="password" style="color: red;"></span></td> {% endcomment %}
+                                </div>
+                            </div>
+                            <label class="control-label">Women Cloth Size :</label>
+                            <label class="checkbox-inline">
+                            <input type="checkbox" value="XS" name='women_cloth_size'>XS
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" value="S" name='women_cloth_size'>S
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" value="M" name='women_cloth_size'>M
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" value="L" name='women_cloth_size'>L
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" value="XL" name='women_cloth_size'>XL
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" value="XXL" name='women_cloth_size'>XXL
+                            </label>
+
+                            <div class="control-group">
+                                <label class="control-label">Description :</label>
+                                <div class="controls">
+                                    <textarea name='women_cloth_desc' cols='30' rows='5'></textarea>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Cloth Image:</label>
+                                <div class="controls">
+                                    <input type="file" name="women_cloth_image" class="input-xlarge" required='required' accept='image/*'>
+                                </div>
+                            </div>
+                            <div class="control-group">
+								<div class="controls">
+									<input type="file" name="women_cloth_image1" class="input-xlarge" accept='image/*'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<input type="file" name="women_cloth_image2" class="input-xlarge" accept='image/*'>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<input type="file" name="women_cloth_image3" class="input-xlarge" accept='image/*'>
+								</div>
+							</div>
+                            <hr>
+                            <div class="actions">
+                                <input tabindex="9" id="btn" class="btn btn-inverse large" type="submit" value="Add Cloth">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+        {% include 'seller_footer.html' %}
+    </div>
+    <script src="{% static 'themes/js/common.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#checkout').click(function(e) {
+                document.location.href = "checkout.html";
+            })
+        });
+    </script>
+</body>
+
+</html>
+{% endblock %}

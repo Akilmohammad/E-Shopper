@@ -1,0 +1,161 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Shopping</title>
+	<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+	{% comment %} <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">       {% endcomment %}
+	{% comment %} <link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet"> {% endcomment %}
+		
+	<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+	<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+	<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+	<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+	<script src="{% static 'themes/js/superfish.js' %}"></script>	
+	<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+</head>
+
+<body>
+    <center><h3>
+        {% if net_price == 0 %}
+            No Item In Cart
+        {% else %}
+            Net Price : {{ net_price }}
+            <br><br>
+            <form name="checkout" method="POST" action="{% url 'checkout_' %}">
+                {% csrf_token %}
+                <input type="hidden" name="amount" value="{{ net_price }}">
+                <input type="submit" name="checkout" value="Checkout " class="btn btn-primary">
+            </form>
+        {% endif %}
+    </h3></center><br><br>
+    <div class="row">
+        {% for b in carts %}
+        <div id="box" class="col-sm-3">
+            <div class="container">
+                <div class="card" style="width: 250px;">
+                    {% if b.women_cloth %}
+                    <a href="{% url 'user_wc_detail' pk=b.women_cloth.pk %}"><img class="card-img-top" src="{{ b.women_cloth.women_cloth_image.url }}" alt="Card image" width="250px" 
+                        height="300px"></a>
+                    <div class="card-body">
+                        <form name="frm" method="POST" action="{% url 'update_price' %}">
+                            {% csrf_token %}
+                            <h4 class="card-title">{{b.women_cloth.women_cloth_name}}</h4>
+                            <input type="hidden" name="pk" value="{{b.pk}}">
+                            <p class="card-text">Price : {{b.women_cloth.women_cloth_price}}
+                                <input type="hidden" name="price" id="price" value="{{b.women_cloth.women_cloth_price}}">
+                            </p>
+                            <p class="card-text">Change Quantity : <input type="number" name="qty" min="1" max="20" value="{{b.total_qty}}" onchange="this.form.submit()"></p>
+                        </form>
+                        <a href="{% url 'user_wc_detail' pk=b.women_cloth.pk %}">More Detail</a>
+                    </div>
+                    {% endif %}
+
+                    {% if b.women_acc %}
+                    <a href="{% url 'user_wa_detail' pk=b.women_acc.pk %}"><img class="card-img-top" src="{{ b.women_acc.women_acc_image.url }}" alt="Card image" width="250px" 
+                        height="300px"></a>
+                    <div class="card-body">
+                        <form name="frm" method="POST" action="{% url 'update_price' %}">
+                            {% csrf_token %}
+                            <h4 class="card-title">{{b.women_acc.women_acc_name}}</h4>
+                            <input type="hidden" name="pk" value="{{b.pk}}">
+                            <p class="card-text">Price : {{b.total_price}}
+                                <input type="hidden" name="price" id="price" value="{{b.women_acc.women_acc_price}}">
+                            </p>
+                            <p class="card-text">Change Quantity : <input type="number" name="qty" min="1" max="20" value="{{b.total_qty}}" onchange="this.form.submit()"></p>
+                        </form>
+                        <a href="{% url 'user_wa_detail' pk=b.women_acc.pk %}">More Detail</a>
+                    </div>
+                    {% endif %}
+                    {% if b.women_footwear %}
+                    <a href="{% url 'user_wf_detail' pk=b.women_footwear.pk %}"><img class="card-img-top" src="{{ b.women_footwear.women_footwear_image.url }}" alt="Card image" width="250px" 
+                        height="300px"></a>
+                    <div class="card-body">
+                        <form name="frm" method="POST" action="{% url 'update_price' %}">
+                            {% csrf_token %}
+                            <h4 class="card-title">{{b.women_footwear.women_footwear_name}}</h4>
+                            <input type="hidden" name="pk" value="{{b.pk}}">
+                            <p class="card-text">Price : {{b.women_footwear.women_footwear_price}}
+                                <input type="hidden" name="price" id="price" value="{{b.women_footwear.women_footwear_price}}">
+                            </p>
+                            <p class="card-text">Change Quantity : <input type="number" name="qty" min="1" max="20" value="{{b.total_qty}}" onchange="this.form.submit()"></p>
+                        </form>
+                        <a href="{% url 'user_wf_detail' pk=b.women_footwear.pk %}">More Detail</a>
+                    </div>
+                    {% endif %}
+                    {% if b.men_footwear %}
+                    <a href="{% url 'user_mf_detail' pk=b.men_footwear.pk %}"><img class="card-img-top" src="{{ b.men_footwear.men_footwear_image.url }}" alt="Card image" width="250px" 
+                        height="300px"></a>
+                    <div class="card-body">
+                        <form name="frm" method="POST" action="{% url 'update_price' %}">
+                            {% csrf_token %}
+                            <h4 class="card-title">{{b.men_footwear.men_footwear_name}}</h4>
+                            <input type="hidden" name="pk" value="{{b.pk}}">
+                            <p class="card-text">Price : {{b.total_price}}
+                                <input type="hidden" name="price" id="price" value="{{b.men_footwear.men_footwear_price}}">
+                            </p>
+                            <p class="card-text">Change Quantity : <input type="number" name="qty" min="1" max="20" value="{{b.total_qty}}" onchange="this.form.submit()"></p>
+                        </form>
+                        <a href="{% url 'user_mf_detail' pk=b.men_footwear.pk %}">More Detail</a>
+                    </div>
+                    {% endif %}
+                    {% if b.men_acc %}
+                    <a href="{% url 'user_ma_detail' pk=b.men_acc.pk %}"><img class="card-img-top" src="{{ b.men_acc.men_acc_image.url }}" alt="Card image" width="250px" 
+                        height="300px"></a>
+                    <div class="card-body">
+                        <form name="frm" method="POST" action="{% url 'update_price' %}">
+                            {% csrf_token %}
+                            <h4 class="card-title">{{b.men_acc.men_acc_name}}</h4>
+                            <input type="hidden" name="pk" value="{{b.pk}}">
+                            <p class="card-text">Price : {{b.total_price}}
+                                <input type="hidden" name="price" id="price" value="{{b.men_acc.men_acc_price}}">
+                            </p>
+                            <p class="card-text">Change Quantity : <input type="number" name="qty" min="1" max="20" value="{{b.total_qty}}" onchange="this.form.submit()"></p>
+                        </form>
+                        <a href="{% url 'user_ma_detail' pk=b.men_acc.pk %}">More Detail</a>
+                    </div>
+                    {% endif %}
+                    {% if b.men_cloth %}
+                    <a href="{% url 'user_mc_detail' pk=b.men_cloth.pk %}"><img class="card-img-top" src="{{ b.men_cloth.men_cloth_image.url }}" alt="Card image" width="250px" 
+                        height="300px"></a>
+                    <div class="card-body">
+                        <form name="frm" method="POST" action="{% url 'update_price' %}">
+                            {% csrf_token %}
+                            <h4 class="card-title">{{b.men_cloth.men_cloth_name}}</h4>
+                            <input type="hidden" name="pk" value="{{b.pk}}">
+                            <p class="card-text">Price : {{b.total_price}}
+                                <input type="hidden" name="price" id="price" value="{{b.men_cloth.men_cloth_price}}">
+                            </p>
+                            <p class="card-text">Change Quantity : <input type="number" name="qty" min="1" max="20" value="{{b.total_qty}}" onchange="this.form.submit()"></p>
+                        </form>
+                        <a href="{% url 'user_mc_detail' pk=b.men_cloth.pk %}">More Detail</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <script src="{% static 'themes/js/common.js' %}"></script>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

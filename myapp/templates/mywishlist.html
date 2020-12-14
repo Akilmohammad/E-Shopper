@@ -1,0 +1,97 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Shopping</title>
+	<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+	{% comment %} <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">       {% endcomment %}
+	{% comment %} <link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet"> {% endcomment %}
+		
+	<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+	<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+	<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+	<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+	<script src="{% static 'themes/js/superfish.js' %}"></script>	
+	<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+</head>
+<body>
+    <div style='margin-left:10px' class="row">    
+    {% for w in wishlists %}
+    <div id="box" class="col-sm-3">
+        <div class="container">
+            <div class="card" style="width: 250px;">
+            {% if w.women_cloth %}    
+                <a href="{% url 'user_wc_detail' pk=w.women_cloth.pk %}"><img class="card-img-top" src="{{ w.women_cloth.women_cloth_image.url }}" alt="Card image" width="250px" height="300px"></a>  
+                <div class="card-body">
+                    <h4 class="card-title">{{w.women_cloth.women_cloth_name}}</h4>
+                    <p class="card-text">Price : {{w.women_cloth.women_cloth_price}}</p>
+                    <a href="{% url 'user_wc_detail' pk=w.women_cloth.pk %}">More Detail</a>
+                </div>
+            {% endif %}
+            {% if w.women_acc %}   
+                    <a href="{% url 'user_wa_detail' pk=w.women_acc.pk %}"><img class="card-img-top" src="{{ w.women_acc.women_acc_image.url }}" alt="Card image" width="250px" height="300px"></a> 
+                    <div class="card-body">
+                        <h4 class="card-title">{{w.women_acc.women_acc_name}}</h4>
+                        <p class="card-text">Price : {{w.women_acc.women_acc_price}}</p>
+                        <a href="{% url 'user_wa_detail' pk=w.women_acc.pk %}">More Detail</a>
+                    </div>
+            {% endif %} 
+            {% if w.women_footwear %} 
+                <a href="{% url 'user_wf_detail' pk=w.women_footwear.pk %}"><img class="card-img-top" src="{{ w.women_footwear.women_footwear_image.url }}" alt="Card image" width="250px" height="300px"></a> 
+                    <div class="card-body">
+                        <h4 class="card-title">{{w.women_footwear.women_footwear_name}}</h4>
+                        <p class="card-text" style='color:red;'>Price : ₹{{w.women_footwear.women_footwear_price}}.00</p>
+                        <a href="{% url 'user_wf_detail' pk=w.women_footwear.pk %}">More Detail</a>
+                    </div>
+            {% endif %}  
+            {% if w.men_cloth %}  
+                <a href="{% url 'user_mc_detail' pk=w.men_cloth.pk %}"><img class="card-img-top" src="{{ w.men_cloth.men_cloth_image.url }}" alt="Card image" width="250px" height="300px"></a> 
+                    <div class="card-body">
+                        <h4 class="card-title">{{w.men_cloth.men_cloth_name}}</h4>
+                        <p class="card-text">Price : {{w.men_cloth.men_cloth_price}}</p>
+                        <a href="{% url 'user_mc_detail' pk=w.men_cloth.pk %}">More Detail</a>
+                    </div>
+            {% endif %}  
+            {% if w.men_acc %} 
+                <a href="{% url 'user_ma_detail' pk=w.men_acc.pk %}"><img class="card-img-top" src="{{ w.men_acc.men_acc_image.url }}" alt="Card image" width="250px" height="300px"></a> 
+                        <div class="card-body">
+                            <h4 class="card-title">{{w.men_acc.men_acc_name}}</h4>
+                            <p class="card-text">Price : {{w.men_acc.men_acc_price}}</p>
+                            <a href="{% url 'user_ma_detail' pk=w.men_acc.pk %}">More Detail</a>
+                        </div>
+            {% endif %}   
+            {% if w.men_footwear %} 
+                <a href="{% url 'user_mf_detail' pk=w.women_footwear.pk %}"><img class="card-img-top" src="{{ w.men_footwear.men_footwear_image.url }}" alt="Card image" width="250px" height="300px"></a> 
+                    <div class="card-body">
+                        <h4 class="card-title">{{w.men_footwear.men_footwear_name}}</h4>
+                        <p class="card-text" style='color:red;'>Price : ₹{{w.men_footwear.men_footwear_price}}.00</p>
+                        <a href="{% url 'user_mf_detail' pk=w.women_footwear.pk %}">More Detail</a>
+                    </div>
+            {% endif %}   
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+        <script src="{% static 'themes/js/common.js' %}"></script>
+    </div>
+    
+</body>
+</html>
+
+{% endblock %}

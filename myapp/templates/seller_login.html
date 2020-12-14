@@ -1,0 +1,186 @@
+{% extends 'header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopping</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">      
+		<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		
+		<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+		<script src="{% static 'themes/js/superfish.js' %}"></script>	
+		<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		
+		<div id="wrapper" class="container">
+			
+			{% comment %} <img class="pageBanner" src="{% static 'themes/images/pageBanner.png' %}" alt="New products" > {% endcomment %}
+			<section class="main-content">
+				<div class="row">
+					<div class="span12">													
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line">Latest <strong>Products</strong></span></span></span>
+									<span class="pull-right">
+										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+									</span>
+								</h4>
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+											<ul class="thumbnails">												
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a1.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Demin Shirt & Jeans</a><br/>
+														<a href="products.html" class="category">Jeans Combo</a>
+														<p class="price">$17.25</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a2.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Trouser For Kids</a><br/>
+														<a href="products.html" class="category">H&M Fashion</a>
+														<p class="price">$32.50</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a3.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Office Tops For Women</a><br/>
+														<a href="products.html" class="category">Wrangler</a>
+														<p class="price">$14.20</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a4.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Fancy Outfit</a><br/>
+														<a href="products.html" class="category">Levi's Fashion</a>
+														<p class="price">$31.45</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="item">
+											<ul class="thumbnails">
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a5.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Girls Lower</a><br/>
+														<a href="products.html" class="category">Vivenne Westwood</a>
+														<p class="price">$22.30</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a6.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Kids Wear</a><br/>
+														<a href="products.html" class="category">Timberland</a>
+														<p class="price">$40.25</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a7.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Kid Girls Formal</a><br/>
+														<a href="products.html" class="category">Replay</a>
+														<p class="price">$10.45</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/ladies/a8.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Girls Jeans</a><br/>
+														<a href="products.html" class="category">Esprit</a>
+														<p class="price">$35.50</p>
+													</div>
+												</li>																																	
+											</ul>
+										</div>
+									</div>							
+								</div>
+							</div>						
+						</div>				
+				</div>
+		</section>
+				<h4><span style='margin-left:500px'>Login to Your Account</span></h4>
+			
+			<section class="main-content">				
+				<div class="row">
+					<div class="span5" style="margin-left: 100px;">					
+					<h4 class="title"><span class="text"><strong>If You are User</strong><a href="{% url 'login' %}" style='color:blue'> <u> Then Click Here </u></a></span></h4>
+					<h4 class="title"><span class="text"><strong>Login</strong> Form For Seller</span></h4>
+					{% if msg %}
+					<div class="alert alert-success" role="alert">
+						{{ msg }}
+					</div>
+					{% endif %}
+						<form name="login" action="{% url 'seller_login' %}" method="post">
+						{% csrf_token %}
+							<input type="hidden" name="next" value="/">
+							<fieldset>
+								<div class="control-group">
+									<div class="controls">
+										<input type="hidden" name='usertype' value='seller'>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Email</label>
+									<div class="controls">
+										<input type="text" name='email' placeholder="Enter your Email" id="email" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Password</label>
+									<div class="controls">
+										<input type="password" name='password' placeholder="Enter your password" id="password" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<input tabindex="3" class="btn btn-inverse large" type="submit" value="Sign into your account">
+									<hr>
+									<p class="reset">Recover your <a tabindex="4" href="{% url 'forgot_password' %}" title="Recover your username or password">Password</a></p>
+								</div>
+							</fieldset>
+						</form>				
+					</div>
+					
+				</div>
+			</section>
+			{% include 'footer.html' %}
+		</div>
+		<script src="{% static 'themes/js/common.js' %}"></script>
+		<script>
+			$(document).ready(function() {
+				$('#checkout').click(function (e) {
+					document.location.href = "checkout.html";
+				})
+			});
+		</script>		
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,294 @@
+{% extends 'header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script type="text/javascript">
+		function checkemail() {
+            var e = document.register.email.value;
+            var reg = /^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$/;
+            if (e == '') {
+                document.getElementById("email").innerHTML = "	* Please Enter Email";
+                document.getElementById("btn").disabled = "True";
+            }
+            else if (!reg.test(e)) {
+                document.getElementById("email").innerHTML = "	* Please Enter Valid Email";
+                document.getElementById("btn").disabled = "True";
+            }
+            else {
+                document.getElementById("email").innerHTML = "";
+                document.getElementById("btn").disabled = "";
+            }
+        }
+        function checkmobile() {
+            var m = document.register.mobile.value;
+            var reg = /^\d{10}$/;
+            if (m == '') {
+                document.getElementById("mobile").innerHTML = "	* Please Enter Mobile Number";
+                document.getElementById("btn").disabled = "True";
+            }
+            else if (!reg.test(m)) {
+                document.getElementById("mobile").innerHTML = "	* Please Enter Valid Mobile Number";
+                document.getElementById("btn").disabled = "True";
+            }
+            else {
+                document.getElementById("mobile").innerHTML = "";
+                document.getElementById("btn").disabled = "";
+            }
+        }
+		function checkpassword() {
+            var m = document.register.password.value;
+            var reg = /^[A-Za-z]\w{6,14}$/;
+            if (m == '') {
+                document.getElementById("password").innerHTML = "	* Please Enter Password";
+                document.getElementById("btn").disabled = "True";
+            }
+            else if (!reg.test(m)) {
+                document.getElementById("password").innerHTML = "	* Password must contain atleast 1 number,1 Uppercase & 1 Lowercase (6,14)";
+                document.getElementById("btn").disabled = "True";
+            }
+            else {
+                document.getElementById("password").innerHTML = "";
+                document.getElementById("btn").disabled = "";
+            }
+        }
+	</script>
+	<meta charset="utf-8">
+	<title>Shopping</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+	<!-- bootstrap -->
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+
+	<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet" />
+
+	<!-- global styles -->
+	<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet" />
+	<link href="{% static 'themes/css/main.css' %}" rel="stylesheet" />
+
+	<!-- scripts -->
+	<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'themes/js/superfish.js' %}"></script>
+	<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div id="wrapper" class="container">
+		<section class="navbar main-menu">
+			<div class="navbar-inner main-menu">
+				<a href="/" class="logo pull-left"><img src="{% static 'themes/images/logo.png' %}"
+						class="site_logo" alt=""></a>
+				<nav id="menu" class="pull-right">
+					<ul>
+						<li><a href="./products.html">Woman</a>
+							<ul>
+								<li><a href="./products.html">Lacinia nibh</a></li>
+								<li><a href="./products.html">Eget molestie</a></li>
+								<li><a href="./products.html">Varius purus</a></li>
+							</ul>
+						</li>
+						<li><a href="./products.html">Man</a></li>
+						<li><a href="./products.html">Sport</a>
+							<ul>
+								<li><a href="./products.html">Gifts and Tech</a></li>
+								<li><a href="./products.html">Ties and Hats</a></li>
+								<li><a href="./products.html">Cold Weather</a></li>
+							</ul>
+						</li>
+						<li><a href="./products.html">Hangbag</a></li>
+						<li><a href="./products.html">Best Seller</a></li>
+						<li><a href="./products.html">Top Seller</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+		
+			{% comment %} <img class="pageBanner" src="{% static 'themes/images/pageBanner.png' %}" alt="New products"> {% endcomment %}
+		<section class="main-content">
+				<div class="row">
+					<div class="span12">
+						<h4 class="title">
+							<span class="pull-left"><span class="text"><span class="line">Latest <strong>Products</strong></span></span></span>
+							<span class="pull-right">
+							<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+							</span>
+						</h4>
+							<div id="myCarousel-2" class="myCarousel carousel slide">
+								<div class="carousel-inner">
+									<div class="active item">
+										<ul class="thumbnails">												
+											<li class="span3">
+												<div class="product-box">
+													<span class="sale_tag"></span>
+													<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware2.jpg' %}" alt="" /></a></p>
+													<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+													<a href="products.html" class="category">Commodo consequat</a>
+													<p class="price">$25.50</p>
+												</div>
+											</li>
+											<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware1.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$17.55</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware6.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Know exactly turned</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$25.30</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware5.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">You think fast</a><br/>
+														<a href="products.html" class="category">World once</a>
+														<p class="price">$25.60</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="item">
+											<ul class="thumbnails">
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware4.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Know exactly</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$45.50</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware3.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+														<a href="products.html" class="category">Commodo consequat</a>
+														<p class="price">$33.50</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware2.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">You think water</a><br/>
+														<a href="products.html" class="category">World once</a>
+														<p class="price">$45.30</p>
+													</div>
+												</li>
+												<li class="span3">
+													<div class="product-box">
+														<p><a href="product_detail.html"><img src="{% static 'themes/images/cloth/bootstrap-women-ware1.jpg' %}" alt="" /></a></p>
+														<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
+														<a href="products.html" class="category">Quis nostrud</a>
+														<p class="price">$25.20</p>
+													</div>
+												</li>																																	
+											</ul>
+										</div>
+									</div>							
+								</div>
+							</div>						
+						</div>		
+					</div>				
+				</div>
+		</section>					
+		<h4><span style='margin-left:500px'>Register Your Account</span></h4>
+		
+		<section class="main-content">
+			<div class="row">
+				<div class="span7" style="margin-left: 100px;">
+					<h4 class="title"><span class="text"><strong>If You Want To be a User</strong><a href="{% url 'register' %}" style='color:blue'> <u> Then Click Here </u></a></span></h4>
+					<h4 class="title"><span class="text"><strong>Register</strong> Form For Seller</span></h4>
+					{% if msg %}
+					<div class="alert alert-danger" role="alert">
+						{{ msg }}
+					</div>
+					{% endif %}
+					<form name="register" action="{% url 'seller_register' %}" method="post" class="form-stacked" enctype="multipart/form-data">
+						{% csrf_token %}
+						<fieldset>
+						<input type="hidden" name='usertype' value='seller'>
+							<div class="control-group">
+								<label class="control-label">Username:</label>
+								<div class="controls">
+									<input type="text" name="username" required='required'
+										placeholder="Enter your username" class="input-xlarge">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Email address:</label>
+								<div class="controls">
+									<input type="text" name="email" required='required'
+										placeholder="Enter your email" class="input-xlarge" onblur="checkemail();">
+										<td><span id="email" style="color: red;"></span></td>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Mobile Number:</label>
+								<div class="controls">
+									<input type="text" name="mobile" required='required' placeholder="Enter your mobile"
+										class="input-xlarge" onblur="checkmobile();">
+										<td><span id="mobile" style="color: red;"></span></td>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Password:</label>
+								<div class="controls">
+									<input type="password" name="password" required='required'
+										placeholder="Enter your password" class="input-xlarge" onblur="checkpassword();">
+									<td><span id="password" style="color: red;"></span></td>	
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Confirm Password:</label>
+								<div class="controls">
+									<input type="password" name="cpassword" required='required'
+										placeholder="Enter password Again" class="input-xlarge">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">User Image:</label>
+								<div class="controls">
+									<input type="file" name="user_image" class="input-xlarge" >
+								</div>
+							</div>
+							<div class="control-group">
+								<p>Now that we know who you are. I'm not a mistake! In a comic, you know how you can
+									tell who the arch-villain's going to be?</p>
+							</div>
+							<hr>
+							<div class="actions">
+								<input tabindex="9" id="btn" class="btn btn-inverse large" type="submit" value="Create your account">
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</section>
+		{% include 'footer.html' %}
+	</div>
+	<script src="{% static 'themes/js/common.js' %}"></script>
+	<script>
+		$(document).ready(function () {
+			$('#checkout').click(function (e) {
+				document.location.href = "checkout.html";
+			})
+		});
+	</script>
+</body>
+
+</html>
+{% endblock %}

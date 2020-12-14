@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+                <form method="POST" action="{% url 'search_item' %}" class="search_form" style='margin-left:10px'>
+                {% csrf_token %}
+                    <input name='search' type="text" style='color:black' class="input-block-level search-query" Placeholder="eg. T-sirt">
+                </form>
+            </div>
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu">
+                        {% if request.session.username %}
+                        <nav id="menu" class="pull-right">
+                            <ul>
+                            <li><a href="#">view Women</a>
+                                <ul>
+                                    <li><a href="{% url 'view_top' %}">View All Tops</a></li>
+                                    <li><a href="{% url 'view_pant' %}">View All Pants</a></li>							
+                                    <li><a href="{% url 'view_saree' %}">View All Saree</a></li>
+                                    <li><a href="{% url 'view_punjabi' %}">View All Punjabi</a></li>
+                                    <li><a href="{% url 'view_western' %}">View All Western</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">View Men</a>
+                                <ul>
+                                    <li><a href="{% url 'view_shirt' %}">View All Shirts</a></li>
+                                    <li><a href="{% url 'view_tshirt' %}">View All T-Shirts</a></li>							
+                                    <li><a href="{% url 'view_jeans' %}">View All Jeans Pant</a></li>
+                                    <li><a href="{% url 'view_jackets' %}">View All Jackets</a></li>
+                                    <li><a href="{% url 'view_casual' %}">View All Casual</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">View Women Accessories</a>
+                                <ul>
+                                    <li><a href="{% url 'view_sunglasses' %}">View All Sunglasses</a></li>
+                                    <li><a href="{% url 'view_necklace' %}">View All Necklace</a></li>							
+                                    <li><a href="{% url 'view_watch' %}">View All Watch</a></li>
+                                    <li><a href="{% url 'view_tie' %}">View All Tie</a></li>
+                                    <li><a href="{% url 'view_purse' %}">View All Purse</a></li>
+                                    <li><a href="{% url 'view_ring' %}">View All Ring</a></li>
+                                    <li><a href="{% url 'view_hairband' %}">View All Hair Band</a></li>
+                                    <li><a href="{% url 'view_cap' %}">View All Cap</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">View Men Accessories</a>
+                                <ul>
+                                    <li><a href="{% url 'view_m_sunglasses' %}">View All Sunglasses</a></li>
+                                    <li><a href="{% url 'view_suspenders' %}">View All Suspenders</a></li>							
+                                    <li><a href="{% url 'view_m_watch' %}">View All Watch</a></li>
+                                    <li><a href="{% url 'view_m_tie' %}">View All Tie</a></li>
+                                    <li><a href="{% url 'view_m_purse' %}">View All Purse</a></li>
+                                    <li><a href="{% url 'view_belt' %}">View All Belt</a></li>
+                                    <li><a href="{% url 'view_socks' %}">View All Socks</a></li>
+                                    <li><a href="{% url 'view_m_cap' %}">View All Cap</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">View Women Footwear</a>
+                                <ul>
+                                    <li><a href="{% url 'view_wedges' %}">View All Wedges</a></li>
+                                    <li><a href="{% url 'view_ballerinas' %}">View All Ballerinas</a></li>							
+                                    <li><a href="{% url 'view_canvas_shoes' %}">View All Canvas Shoes</a></li>
+                                    <li><a href="{% url 'view_wellington_boots' %}">View All Wellington Boots</a></li>
+                                    <li><a href="{% url 'view_flip_flop' %}">View All Flip-Flop</a></li>
+                                    <li><a href="{% url 'view_sandals' %}">View All Sandals</a></li>
+                                    <li><a href="{% url 'view_sport_shoes' %}">View All Sport Shoes</a></li>
+                                    <li><a href="{% url 'view_heels' %}">View All Heels</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">View Men Footwear</a>
+                                <ul>
+                                    <li><a href="{% url 'view_m_sandals' %}">View All Sandals</a></li>
+                                    <li><a href="{% url 'view_m_flipflop' %}">View All Flip Flop</a></li>							
+                                    <li><a href="{% url 'view_m_canvas_shoes' %}">View All Canvas Shoes</a></li>
+                                    <li><a href="{% url 'view_brogues' %}">View All Brogues</a></li>
+                                    <li><a href="{% url 'view_oxford' %}">View All Oxford</a></li>
+                                    <li><a href="{% url 'view_loafers' %}">View All Loafers</a></li>
+                                    <li><a href="{% url 'view_m_sport_shoes' %}">View All Sport Shoes</a></li>
+                                    <li><a href="{% url 'view_leather' %}">View All Leather Shoes</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'seller_index' %}"  style='background-color:lightblue'>{{ request.session.username }}'s Account</a>					
+                                    <ul>
+                                        <li><a href="{% url 'my_account' %}">Your Profile</a></li>
+                                        <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>							
+                                        <li><a href="{% url 'change_password' %}">Change Password</a></li>
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>    
+                        </nav>
+                        {% else %}
+                        <li style="background-color: aqua; font-size:12px"><a href="{% url 'register' %}">Register</a></li>
+                        <li style="background-color: orange;"><a href="{% url 'login' %}">Login</a></li>		
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">				
+					<a href="{% url 'index' %}" class="logo pull-left"><img src="{% static 'themes/images/logo.png' %}" class="site_logo" alt=""></a>
+					<nav id="menu" class="pull-right">
+						<ul>
+							<li><a href="{% url 'add_women_cloths' %}">Add Woman Cloths</a></li>															
+							<li><a href="{% url 'add_men_cloths' %}">Add Man Cloths</a></li>		
+							<li><a href="{% url 'add_women_acc' %}">Add Woman Accessories</a></li>							
+							<li><a href="{% url 'add_men_acc' %}">Add Man Accessories</a></li>
+							<li><a href="{% url 'add_women_footwear' %}">Add Women Footwear</a></li>
+                            <li><a href="{% url 'add_men_footwear' %}">Add Men Footwear</a></li>
+							{% comment %} <li><a href="./products.html">Top Seller</a></li> {% endcomment %}
+						</ul>
+					</nav>
+				</div>
+			</section>
+	</div>		
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

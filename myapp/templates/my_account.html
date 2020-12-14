@@ -1,0 +1,90 @@
+{% extends data|yesno:"seller_header.html,header.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopping</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">      
+		<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		
+		<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+		<script src="{% static 'themes/js/superfish.js' %}"></script>	
+		<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		
+				
+			<section class="header_text sub">
+                <h4 class="title"><span class="text"><strong>Your</strong> Profile</span></h4>
+			</section>			
+			<section class="main-content">				
+				<div class="row">
+					<div class="span5" style="margin-left: 500px;">
+					{% if msg %}
+					<div class="alert alert-danger" role="alert">
+						{{ msg }}
+					</div>
+					{% endif %}
+						<form name="enter_email" method="POST" action="{% url 'my_account' %}" enctype="multipart/form-data">
+						{% csrf_token %}
+                            <fieldset>
+                            <tr>
+                                <td colspan="2" align="center">
+                                <img src="{{ user.user_image.url }}" align='center' style='border-radius: 50%' alt="Please Select Your Image" width="100px" height="100px">
+                                </td>
+                            </tr>
+                            <br><br><br>
+                            <div class="control-group">
+								<label class="control-label">Username:</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" value="{{ user.username }}" disabled>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Email address:</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" value="{{ user.email }}" disabled>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Mobile Number:</label>
+								<div class="controls">
+                                    <input type="text" class="input-xlarge" value="{{ user.mobile }}" disabled>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">User Type:</label>
+								<div class="controls">
+                                    <input type="text" class="input-xlarge" value="{{ user.usertype }}" disabled>
+								</div>
+							</div>
+                                
+							</fieldset>
+						</form>				
+					</div>
+				</div>
+			</section>
+			{% include 'footer.html' %}
+		</div>
+		<script src="{% static 'themes/js/common.js' %}"></script>
+	</body>
+</html>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopping</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">      
+		<link href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		
+		<link href="{% static 'themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static 'themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'themes/css/main.css' %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static 'themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>				
+		<script src="{% static 'themes/js/superfish.js' %}"></script>	
+		<script src="{% static 'themes/js/jquery.scrolltotop.js' %}"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		
+		<div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">				
+					<a href="/" class="logo pull-left"><img src="{% static 'themes/images//logo.png' %}" class="site_logo" alt=""></a>
+					<nav id="menu" class="pull-right">
+						<ul>
+							<li><a href="./products.html">Woman</a>					
+								<ul>
+									<li><a href="./products.html">Lacinia nibh</a></li>									
+									<li><a href="./products.html">Eget molestie</a></li>
+									<li><a href="./products.html">Varius purus</a></li>									
+								</ul>
+							</li>															
+							<li><a href="./products.html">Man</a></li>			
+							<li><a href="./products.html">Sport</a>
+								<ul>									
+									<li><a href="./products.html">Gifts and Tech</a></li>
+									<li><a href="./products.html">Ties and Hats</a></li>
+									<li><a href="./products.html">Cold Weather</a></li>
+								</ul>
+							</li>							
+							<li><a href="./products.html">Hangbag</a></li>
+							<li><a href="./products.html">Best Seller</a></li>
+							<li><a href="./products.html">Top Seller</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>			
+			<section class="header_text sub">
+			<img class="pageBanner" src="{% static 'themes/images/pageBanner.png' %}" alt="New products" >
+				<h4><span>Enter Email For Forgot Password</span></h4>
+			</section>			
+			<section class="main-content">				
+				<div class="row">
+					<div class="span5" style="margin-left: 100px;">					
+					<h4 class="title"><span class="text"><strong>Enter Email</strong> Form</span></h4>
+					{% if msg %}
+					<div class="alert alert-danger" role="alert">
+						{{ msg }}
+					</div>
+					{% endif %}
+						<form name="enter_email" method="POST" action="{% url 'forgot_password' %}">
+						{% csrf_token %}
+                            <fieldset>
+								<div class="control-group">
+									<label class="control-label">Enter Email</label>
+									<div class="controls">
+										<input type="text" name="email" placeholder="Enter your Email" class="input-xlarge">
+									</div>
+								</div>
+                                <div class="actions">
+								<input tabindex="9" name='submit' id="btn" class="btn btn-inverse large" type="submit" value="Send OTP">
+							    </div>
+							</fieldset>
+						</form>				
+					</div>
+				</div>
+			</section>
+			{% include 'footer.html' %}
+		</div>
+		<script src="{% static 'themes/js/common.js' %}"></script>
+	</body>
+</html>
+{% endblock %}
