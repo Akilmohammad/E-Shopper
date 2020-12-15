@@ -277,7 +277,7 @@ def forgot_password(request):
         email = request.POST['email']
         try:
             user = User.objects.get(email=email)
-            rec = [email, ]
+            rec = [email,]
             subject = "OTP For Forgot Password"
             otp = random.randint(1000, 9999)
             message = "Your OTP For Forgot Password Is "+str(otp)
