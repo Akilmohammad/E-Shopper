@@ -144,9 +144,12 @@
 												<tr class="">
 													<th>Size</th>
 													<td>{% for i in women_cloth.women_cloth_size %}
-															{{ i }}
+															<tr>
+																{{ i }}
+															</tr>		
 														{% endfor %}	
-													</td>
+													</td> 
+													{{ women_cloth.women_cloth_size }}
 												</tr>		
 												<tr class="alt">
 													<th>Colour</th>
