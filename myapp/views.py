@@ -132,14 +132,18 @@ def callback(request):
 
 
 def index(request):
+    men_acc = MEN_ACCESSORIES.objects.all()
+    context = {
+        'men_acc':men_acc,
+    }
     try:
         user = User.objects.get(email=request.session['email'])
         if user.usertype == "seller":
             return render(request, 'seller_index.html')
         else:
-            return render(request, 'index.html')
+            return render(request, 'index.html',context)
     except:
-        return render(request, 'index.html')
+        return render(request, 'index.html',context)
 
 
 def contact(request):
@@ -907,7 +911,7 @@ def view_m_cap(request):
 
 def ma_product_detail(request, pk):
     men_accs = MEN_ACCESSORIES.objects.get(pk=pk)
-    user = User.objects.get(email=request.session['email'])
+    # user = User.objects.get(email=request.session['email'])
     return render(request, 'men_acc/ma_product_detail.html', {'men_accs': men_accs})
 
 
@@ -1170,7 +1174,7 @@ def add_men_footwear(request):
                 return render(request, "men_footwear/add_men_footwear.html", {'msg': msg})
         else:
             MEN_FOOTWEAR.objects.create(men_footwear_category=mfc, men_footwear_name=mfn, men_footwear_price=mfp,
-                                        men_footwear_brand=mfb, men_footwear_desc=mfd, men_footwear_image=mfi,men_footwear_image1=mfi1,men_footwear_image2=mfi2,men_footwear_image3=mfi3, mf_size=mfs, men_footwear_proID=mfpID, user=user)
+                                        men_footwear_brand=mfb, men_footwear_desc=mfd, men_footwear_image=mfi,men_footwear_image1=mfi1,men_footwear_image2=mfi2,men_footwear_image3=mfi3, men_footwear_size=mfs, men_footwear_proID=mfpID, user=user)
             msg = "Footwear Added Successfully"
             return render(request, "men_footwear/add_men_footwear.html", {'msg': msg})
     else:
